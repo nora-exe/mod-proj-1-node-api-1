@@ -2,4 +2,8 @@ const server = require('./api/server');
 
 const port = 5000;
 
-// START YOUR SERVER HERE
+// START SERVER HERE:
+// watch port 5000
+server.listen(port, () =>
+  console.log('Listening on', port)
+);
