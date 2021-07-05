@@ -4,18 +4,18 @@ const User = require('./users/model'); // import users
 const server = express(); // creates the server
 server.use(express.json()); // makes server parse json
 
-//🔽 GET user
-server.get('api/users', (req, res) => {
+//🔽 GET users
+server.get('/api/users', (req, res) => {
     User.find()
-        .then(users => {
-            res.json(users);
+    .then(users => {
+        res.json(users);
+    })
+    .catch(err => {
+        res.status(500).json({
+            message: 'The users information could not be retrieved',
+            err: err.message
         })
-        .catch(err => {
-            res.status(500).json({
-                message: 'The users information could not be retrieved',
-                err: err.message
-            })
-        })
+    })
 })
 
 //🔽 GET user by id
