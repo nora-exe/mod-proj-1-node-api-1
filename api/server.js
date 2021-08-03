@@ -80,6 +80,7 @@ server.delete('/api/users/:id', async (req, res) => {
 })
 
 //🔽 PUT (update) user
+// 📝NOTE: Test 15 is failing ❌ sending 404 because user id foobar doesn't exist, so that check is failing before it even gets to the input validation
 server.put('/api/users/:id', async (req, res) => {
     const possibleUser = await User.findById(req.params.id)
     if (!possibleUser) {
